@@ -2,6 +2,7 @@ package com.company.springbootrestapi.controller;
 
 
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,9 @@ import java.util.Map;
 import com.company.springbootrestapi.model.Product;
 import com.company.springbootrestapi.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,6 +21,12 @@ public class ProductController {
 
     @Autowired
     ProductService productService;
+
+    @GetMapping(value = "getproducts")
+    public ResponseEntity<List<Product>> handle2(){
+        CacheControl cacheControl = CacheControl.noCache();
+        return ResponseEntity.ok().cacheControl(cacheControl).body(productService.getProducts());
+    }
 
     @GetMapping("")
     List<Product> getProducts(){
