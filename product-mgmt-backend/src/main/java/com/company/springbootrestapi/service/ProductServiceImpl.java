@@ -1,6 +1,7 @@
 package com.company.springbootrestapi.service;
 
 import com.company.springbootrestapi.model.Product;
+import com.company.springbootrestapi.model.ProductReviews;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -49,6 +50,18 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public void deleteProduct(Long id) {
         System.out.println("Status.. "+products.remove(getProduct(id)));
+    }
+
+    @Override
+    public List<ProductReviews> getProductReviews(Long id) {
+        List<ProductReviews> reviewList = new ArrayList<>();
+        ProductReviews review1 = new ProductReviews(1l, 1L, "Some review 1");
+        ProductReviews review2 = new ProductReviews(2l, 1L, "Some review 2");
+
+        reviewList.add(review1);
+        reviewList.add(review2);
+
+        return reviewList;
     }
 
 }

@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.Map;
 
 import com.company.springbootrestapi.model.Product;
+import com.company.springbootrestapi.model.ProductReviews;
 import com.company.springbootrestapi.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.InputStreamResource;
+import org.springframework.hateoas.Resources;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -64,4 +64,11 @@ public class ProductController {
         return map;
     }
 
+    @GetMapping(value = "/{productId}/reviews")
+    public Resources<ProductReviews> getReviewsForProduct(@PathVariable final long productId) {
+
+        List<ProductReviews> reviews = productService.getProductReviews(productId);
+        return new Resources<ProductReviews>(reviews);
+
+    }
 }

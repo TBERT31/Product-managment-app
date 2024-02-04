@@ -1,6 +1,7 @@
 package com.company.springbootrestapi.service;
 
 import com.company.springbootrestapi.model.Product;
+import com.company.springbootrestapi.model.ProductReviews;
 
 import java.util.List;
 
@@ -10,4 +11,6 @@ public interface ProductService {
     void createProduct(Long productID, String productName, Integer price);
     void updateProduct(Product product);
     void deleteProduct(Long id);
+
+    List<ProductReviews> getProductReviews(Long id);
 }
