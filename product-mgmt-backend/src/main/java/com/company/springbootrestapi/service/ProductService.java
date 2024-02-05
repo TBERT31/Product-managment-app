@@ -1,7 +1,6 @@
 package com.company.springbootrestapi.service;
 
 import com.company.springbootrestapi.model.Product;
-import com.company.springbootrestapi.model.ProductReviews;
 
 import java.util.List;
 

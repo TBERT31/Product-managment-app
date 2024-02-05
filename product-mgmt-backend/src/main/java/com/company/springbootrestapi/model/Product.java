@@ -1,46 +1,36 @@
 package com.company.springbootrestapi.model;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
-import com.company.springbootrestapi.controller.ProductController;
-import org.springframework.hateoas.Link;
-import org.springframework.hateoas.ResourceSupport;
+import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-public class Product extends ResourceSupport {
+public class Product{
 
-    private Product(){
+    public Product() {
         super();
     }
 
-    public Product(Long productID, String productName, Integer productPrice) {
+    public Product(String id, @NotBlank @Size(max = 140) String productName) {
         super();
-        this.productID = productID;
+        this.id = id;
         this.productName = productName;
-        this.productPrice = productPrice;
-
-        add(new Link("/products/"+productID).withSelfRel());
-        add(linkTo(methodOn(ProductController.class).deleteProduct(productID)).withRel("delete"));
-        add(linkTo(methodOn(ProductController.class).updateProductUsingJson(new Product())).withRel("update"));
-        add(linkTo(methodOn(ProductController.class).getReviewsForProduct(productID)).withRel("Reviews"));
     }
 
-    private Long productID;
+    @Id
+    private String id;
 
-    @NotBlank(message = "Name is a mandatory field")
+    @NotBlank
+    @Size(max = 140)
     private String productName;
 
-    private Integer productPrice;
-
-    public Long getProductID() {
-        return productID;
+    public String getId() {
+        return id;
     }
 
-    public void setProductID(Long productID) {
-        this.productID = productID;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getProductName() {
@@ -49,14 +39,6 @@ public class Product extends ResourceSupport {
 
     public void setProductName(String productName) {
         this.productName = productName;
-    }
-
-    public Integer getProductPrice() {
-        return productPrice;
-    }
-
-    public void setProductPrice(Integer productPrice) {
-        this.productPrice = productPrice;
     }
 
 
