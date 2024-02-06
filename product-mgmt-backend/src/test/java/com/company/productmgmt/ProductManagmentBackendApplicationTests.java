@@ -1,10 +1,10 @@
-package com.company.springbootrestapi;
+package com.company.productmgmt;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringbootrestapiApplicationTests {
+class ProductManagmentBackendApplicationTests {
 
 	@Test
 	void contextLoads() {
