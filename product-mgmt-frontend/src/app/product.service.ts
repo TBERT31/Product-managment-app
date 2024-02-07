@@ -29,7 +29,8 @@ export class ProductService {
     return this.http.delete(this.baseUrl+'/products/'+id);
   }
 
-  getProductsList():Observable<Object>{
+  getProductsList():Observable<any>{
     return this.http.get(this.baseUrl+'/products/');
   }
+
 }
