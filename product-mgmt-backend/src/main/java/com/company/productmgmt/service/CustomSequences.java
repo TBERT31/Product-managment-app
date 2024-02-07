@@ -3,7 +3,7 @@ package com.company.productmgmt.service;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collation = "customSequences")
+@Document(collection = "customSequences")
 public class CustomSequences {
     @Id
     private String id;
@@ -24,4 +24,5 @@ public class CustomSequences {
     public void setSeq(int seq) {
         this.seq = seq;
     }
+
 }

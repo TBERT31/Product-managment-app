@@ -41,8 +41,9 @@ public class ProductController {
         return productService.getProduct(productId);
     }
 
-    @PutMapping("/products/")
-    public Mono<Product> updateProduct(@Valid @RequestBody Product product) {
+    @PutMapping("/products/{id}")
+    public Mono<Product> updateProduct(@PathVariable(value = "id") Long productId, @Valid @RequestBody Product product) {
+        product.setId(productId);
         return productService.updateProduct(product);
     }
 
